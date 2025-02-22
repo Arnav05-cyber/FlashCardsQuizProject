@@ -1,0 +1,52 @@
+/* 🌌 Background */
+.root {
+    -fx-background-image: url("background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-alignment: center;
+}
+
+/* 🎨 Question Text (Bowlby One SC) */
+.question-label {
+    -fx-font-family: "Bowlby One SC";
+    -fx-font-size: 40px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(gaussian, black, 5, 0.8, 0, 0);
+}
+
+/* 🔘 Button Styles */
+.button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+    -fx-cursor: hand;
+}
+
+/* 🔥 Button Hover Effect */
+.button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-border-color: white;
+}
+
+/* ✨ Answer Text */
+.label {
+    -fx-font-size: 32px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+/* 📌 Center Layout */
+.vbox {
+    -fx-alignment: center;
+    -fx-spacing: 15px;
+}

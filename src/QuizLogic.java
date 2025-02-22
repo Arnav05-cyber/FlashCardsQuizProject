@@ -1,37 +1,29 @@
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.Comparator;
 
 public class QuizLogic {
     private FlashCardManager manager;
     private PriorityQueue<FlashCard> hardQuestions;
 
-    public QuizLogic(){
-        this.manager = new FlashCardManager();
+    public QuizLogic(FlashCardManager manager) {
+        this.manager = manager;
         this.hardQuestions = new PriorityQueue<>(Comparator.comparing(FlashCard::getQuestion));
     }
 
-    public void startQuiz(){
-        Scanner sc = new Scanner(System.in);
-        FlashCard card;
-
-        while((card = manager.getFlashCard()) != null){
-            System.out.println("Question; " + card.getQuestion());
-            String userAnswer = sc.nextLine();
-
-            if(manager.checkAnswer(card.getQuestion(),userAnswer)){
-                System.out.println("Correct!");
-            }
-            else {
-                System.out.println("Wrong! Correct Answer: " + card.getAnswer());
-                hardQuestions.add(card);
-            }
+    public boolean checkAnswer(String question, String userAnswer) {
+        boolean isCorrect = manager.checkAnswer(question, userAnswer);
+        if (!isCorrect) {
+            hardQuestions.add(new FlashCard(question, manager.getCorrectAnswer(question))); // Use getter
         }
+        return isCorrect;
+    }
 
+    public void reviewHardQuestions() {
         System.out.println("Reviewing hard questions...");
         while (!hardQuestions.isEmpty()) {
             FlashCard reviewCard = hardQuestions.poll();
             System.out.println("Question: " + reviewCard.getQuestion());
-            sc.nextLine();
+            System.out.println("Correct Answer: " + reviewCard.getAnswer());
         }
-        sc.close();
     }
 }
